@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj": {}
+    "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj": {
+    "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj",
         "projectName": "Pruebas",
-        "projectPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj",
+        "projectPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Pruebas\\Pruebas.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Pruebas\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Pruebas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj"
               }
             }
           }

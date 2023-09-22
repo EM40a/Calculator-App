@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "Entidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Entidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entidades.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Entidades/1.0.0": {
+      "type": "project",
+      "path": "../Entidades/Entidades.csproj",
+      "msbuildProject": "../Entidades/Entidades.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "Entidades >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Usuario\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\MiCalculadora\\MiCalculadora.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\MiCalculadora\\MiCalculadora.csproj",
       "projectName": "MiCalculadora",
-      "projectPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\MiCalculadora\\MiCalculadora.csproj",
+      "projectPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\MiCalculadora\\MiCalculadora.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\source\\repos\\La-Calculadora\\Entidades\\MiCalculadora\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\MiCalculadora\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\source\\repos\\Ejercicio-Integrador\\La-Calculadora\\Entidades\\Entidades\\Entidades.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

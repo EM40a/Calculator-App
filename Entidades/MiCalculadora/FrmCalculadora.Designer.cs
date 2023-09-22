@@ -41,6 +41,7 @@
             lblPrimerOperador = new Label();
             lblOperacion = new Label();
             labelSegundoOperador = new Label();
+            lblResultadoNumerico = new Label();
             grpSistema.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             btnOperar.TabIndex = 4;
             btnOperar.Text = "Operar";
             btnOperar.UseVisualStyleBackColor = true;
+            btnOperar.Click += btnOperar_Click;
             // 
             // btnLimpiar
             // 
@@ -68,6 +70,7 @@
             btnLimpiar.TabIndex = 5;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCerrar
             // 
@@ -93,6 +96,7 @@
             rdbDecimal.TabStop = true;
             rdbDecimal.Text = "Decimal";
             rdbDecimal.UseVisualStyleBackColor = true;
+            rdbDecimal.CheckedChanged += rdbDecimal_CheckedChanged;
             // 
             // rdbBinario
             // 
@@ -104,6 +108,7 @@
             rdbBinario.TabStop = true;
             rdbBinario.Text = "Binario";
             rdbBinario.UseVisualStyleBackColor = true;
+            rdbBinario.CheckedChanged += rdbBinario_CheckedChanged;
             // 
             // grpSistema
             // 
@@ -126,7 +131,7 @@
             cmbOperacion.FormattingEnabled = true;
             cmbOperacion.IntegralHeight = false;
             cmbOperacion.ItemHeight = 45;
-            cmbOperacion.Items.AddRange(new object[] { "" });
+            cmbOperacion.Items.AddRange(new object[] { " ", "+", "-", "*", "/" });
             cmbOperacion.Location = new Point(412, 473);
             cmbOperacion.Margin = new Padding(16, 3, 16, 3);
             cmbOperacion.Name = "cmbOperacion";
@@ -140,9 +145,9 @@
             lblResultado.ForeColor = Color.FromArgb(125, 226, 209);
             lblResultado.Location = new Point(62, 148);
             lblResultado.Name = "lblResultado";
-            lblResultado.Size = new Size(900, 67);
+            lblResultado.Size = new Size(301, 67);
             lblResultado.TabIndex = 13;
-            lblResultado.Text = "Resultado:";
+            lblResultado.Text = "Resultado: ";
             // 
             // txtPrimerOperador
             // 
@@ -152,7 +157,8 @@
             txtPrimerOperador.Name = "txtPrimerOperador";
             txtPrimerOperador.Size = new Size(334, 53);
             txtPrimerOperador.TabIndex = 1;
-            txtPrimerOperador.Text = "";
+            txtPrimerOperador.Text = " ";
+            txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
             // 
@@ -161,7 +167,8 @@
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(334, 53);
             txtSegundoOperador.TabIndex = 3;
-            txtSegundoOperador.Text = "";
+            txtSegundoOperador.Text = " ";
+            txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // lblPrimerOperador
             // 
@@ -197,12 +204,23 @@
             labelSegundoOperador.TabIndex = 12;
             labelSegundoOperador.Text = "Segundo operando:";
             // 
+            // lblResultadoNumerico
+            // 
+            lblResultadoNumerico.AutoEllipsis = true;
+            lblResultadoNumerico.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            lblResultadoNumerico.ForeColor = Color.White;
+            lblResultadoNumerico.Location = new Point(367, 148);
+            lblResultadoNumerico.Name = "lblResultadoNumerico";
+            lblResultadoNumerico.Size = new Size(595, 67);
+            lblResultadoNumerico.TabIndex = 14;
+            // 
             // FrmCalculadora
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 40, 52);
             ClientSize = new Size(1006, 721);
+            Controls.Add(lblResultadoNumerico);
             Controls.Add(labelSegundoOperador);
             Controls.Add(lblOperacion);
             Controls.Add(lblPrimerOperador);
@@ -240,5 +258,6 @@
         private Label lblPrimerOperador;
         private Label lblOperacion;
         private Label labelSegundoOperador;
+        private Label lblResultadoNumerico;
     }
 }

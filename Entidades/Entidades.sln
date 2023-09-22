@@ -5,14 +5,7 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{F37319BC-0BFF-457A-89D0-4718669B9019}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pruebas", "Pruebas\Pruebas.csproj", "{74EEDC52-A6F8-4117-87DE-31B20040BC3C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiCalculadora", "MiCalculadora\MiCalculadora.csproj", "{3EDA6313-92FB-4461-ADD8-19E0CBE6E42B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8FB2742-9590-43D8-A491-02FE4EB27368}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +17,6 @@ Global
 		{F37319BC-0BFF-457A-89D0-4718669B9019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F37319BC-0BFF-457A-89D0-4718669B9019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F37319BC-0BFF-457A-89D0-4718669B9019}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74EEDC52-A6F8-4117-87DE-31B20040BC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74EEDC52-A6F8-4117-87DE-31B20040BC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74EEDC52-A6F8-4117-87DE-31B20040BC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74EEDC52-A6F8-4117-87DE-31B20040BC3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3EDA6313-92FB-4461-ADD8-19E0CBE6E42B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3EDA6313-92FB-4461-ADD8-19E0CBE6E42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EDA6313-92FB-4461-ADD8-19E0CBE6E42B}.Release|Any CPU.ActiveCfg = Release|Any CPU

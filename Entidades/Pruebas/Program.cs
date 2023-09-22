@@ -6,17 +6,14 @@ namespace Pruebas
     {
         static void Main(string[] args)
         {
-            Numeracion x = new (10, ESistema.Decimal);
-            Numeracion y = new(12, ESistema.Decimal);
+            Numeracion x = new("1010", Numeracion.ESistema.Binario);
+            Numeracion y = new("123", Numeracion.ESistema.Decimal);
 
-            Operacion operacion = new (x, y);
-            Numeracion resultado = operacion.Operar('+');
+            Operacion operacion = new(x, y);
 
-            Console.WriteLine(resultado.Valor);
+            //Numeracion resultado = operacion.Operar('+');
 
-
-            Console.WriteLine(Numeracion.BinarioADecimal("00111111"));
-            
+            Console.WriteLine($"La suma es: {y.Valor}");
         }
     }
 }

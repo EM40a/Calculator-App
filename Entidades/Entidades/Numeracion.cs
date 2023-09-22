@@ -1,44 +1,55 @@
-﻿namespace Entidades
-{
-    public enum ESistema
-    {
-        Binario,
-        Decimal
-    }
+﻿using System.Net;
 
+namespace Entidades
+{
     public class Numeracion
     {
-        private ESistema sistema;
-        private double valorNumerico;
-
-        public string Valor
+        public enum ESistema
         {
-            get => this.valorNumerico.ToString();
+            Binario,
+            Decimal
         }
+
+        private double valorNumerico;
+        private ESistema sistema;
+
         public ESistema Sistema
         {
-            get => this.sistema;
+            get
+            {
+                return this.sistema;
+            }
+        }
+        public string Valor
+        {
+            get
+            {
+                return ConvertirA(this.sistema);
+            }
         }
 
-        public Numeracion(double valor, ESistema sistema)
+        public Numeracion(double valor, ESistema sistema):this(valor.ToString(), sistema)
         {
-            this.valorNumerico = valor;
-            this.sistema = sistema;
         }
+
         public Numeracion(string valor, ESistema sistema)
         {
             InicializarValores(valor, sistema);
         }
 
+        // Metodos
+        /// <summary>
+        /// Inicializa los valores de la numeracion, internamente se trabajara con numeros
+        /// </summary>
+        /// <param name="valor">Es el numero decimal o binario</param>
+        /// <param name="sistema">El sistema de numeracion del numero (decimal o binario)</param>
         private void InicializarValores(string valor, ESistema sistema)
         {
-            // Si el valor es un binario, lo convertirá a decimal antes de guardarlo, de lo contrario verificará que sea un numero decimal. En caso de que no se cumplan ninguna de las condiciones antes dadas, internamente se almacenara el MinValue de un double
+            //* Si el valor es binario, lo convierte a decimal antes de guardarlo, de lo contrario verificará que sea un numero decimal.
 
-            if (EsBinario(valor))
+            if (Sistema == ESistema.Binario && EsBinario(valor))
             {
-                double valorDecimal = BinarioADecimal(valor);
-                this.valorNumerico = valorDecimal;
-                this.sistema = ESistema.Decimal;
+                this.valorNumerico = BinarioADecimal(valor);
             }
             else if (!double.TryParse(valor, out valorNumerico))
             {
@@ -53,11 +64,11 @@
         /// </summary>
         /// <param name="valor">Es la cadena con el numero binario a convertir</param>
         /// <returns>El numero convertido a decimal</returns>
-        public static double BinarioADecimal(string valor)
+        private static double BinarioADecimal(string valor)
         {
-            if (!EsBinario(valor))
+            if (!EsBinario(valor) && double.TryParse(valor, out double valorNumerico))
             {
-                return 0;
+                return valorNumerico;
             }
 
             double valorDecimal = 0;
@@ -83,62 +94,53 @@
         /// <returns>Una cadena representada en un sistema de numeración basado en el parámetro recibido</returns>
         public string ConvertirA(ESistema sistema)
         {
-            if (sistema == ESistema.Binario)
+            if (sistema == this.sistema)
             {
-                double retornoDecimal = BinarioADecimal(Valor);
-                return retornoDecimal.ToString();
+                return valorNumerico.ToString();
             }
-            else if (sistema == ESistema.Decimal)
-            {
-                double retornoBinario = DecimalABinario(Valor);
-                return retornoBinario.ToString();
-            }
-            return "Sistema inválido";
+
+            return (sistema == ESistema.Binario) ? DecimalABinario(Valor) : BinarioADecimal(Valor).ToString();
         }
 
         /// <summary>
-        /// Convierte un string que representa un numero Decimal a un numero Binario
+        /// Convierte un string que representa un numero decimal a un numero binario
         /// </summary>
         /// <param name="valor">Es la cadena con el numero decimal a convertir</param>
-        /// <returns>El numero convertido a binario</returns>
-        public double DecimalABinario(string valor)
+        /// <returns>El numero convertido a binario o un mensaje de error en caso de que la cadena no represente un numero</returns>
+        private static string DecimalABinario(string valor)
         {
-            if (EsBinario(valor))
+            if (!int.TryParse(valor, out int valorDecimal))
             {
-                return 0;
+                return "Valor inválido";
             }
-            double valorBinario = 0;
-            int resto = 0;
-            // 134
-
-            if (int.TryParse(valor, out int valorDecimal))
-            {
-                while (resto < 2)
-                {
-                    resto = valorDecimal % 2;
-                    valorDecimal = resto + valorDecimal;
-                }
-
-            }
-
-            for (int i = 0; i < 2; i++)
-            {
-                valorBinario += resto;
-            }
-
-            return valorBinario;
+            
+            return DecimalABinario(valorDecimal); ;
         }
 
-        public double DecimalABinario(int valor)
+        /// <summary>
+        /// Convierte un entero positivo a un numero binario
+        /// </summary>
+        /// <param name="valor">Es el numero decimal a convertir en binario</param>
+        /// <returns>El numero convertido a binario</returns>
+        private static string DecimalABinario(int valor)
         {
-            // TODO
-            if (!EsBinario(valor.ToString()))
+            valor = Math.Abs(valor); // Convierte el valor recibido a su valor absoluto
+
+            //? Escuche en clase que tambien se podia hacer de esta forma
+            //if (valor < 0)
+            //{
+            //    return double.MinValue.ToString();
+            //}
+
+            string valorBinario = "";
+
+            do
             {
-                return 0;
+                valorBinario = (valor % 2) + valorBinario;
+                valor /= 2;
             }
-            double valorDecimal = 0;
-            int potencia = 0;
-            return valorDecimal;
+            while (valor >= 2);
+            return valor + valorBinario;
         }
 
         /// <summary>
@@ -153,21 +155,37 @@
                 if (i != '0' && i != '1')
                 {
                     return false;
-                }
+                }   
             }
 
             return true;
         }
 
-        public static bool operator ==(Numeracion num1, Numeracion num2)
+        // <Sobrecargas>
+
+        //* Dos numeraciones serán iguales si pertenecen al mismo sistema.
+        /// <summary>
+        /// Determina si los sistemas de ambas numeraciones son iguales
+        /// </summary>
+        /// <param name="numeracion1"></param>
+        /// <param name="numeracion2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return num1.Valor == num2.Valor;
+            return numeracion1.sistema == numeracion2.sistema;
         }
-        public static bool operator !=(Numeracion num1, Numeracion num2)
+        /// <summary>
+        /// Determina si los sistemas de ambas numeraciones son distintas
+        /// </summary>
+        /// <param name="numeracion1"></param>
+        /// <param name="numeracion2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return !(num1 == num2);
+            return !(numeracion1 == numeracion2);
         }
 
+        //* Un Sistema y una Numeración serán iguales, si el sistema es igual a sistema de la numeración;
         /// <summary>
         /// Determina si el sistema de la numeracion y el sistema recibido son iguales
         /// </summary>
@@ -178,7 +196,6 @@
         {
             return sistema == numeracion.Sistema;
         }
-
         /// <summary>
         /// Determina si el sistema de la numeracion y el sistema recibido son distintos
         /// </summary>
@@ -187,27 +204,28 @@
         /// <returns>True en caso de ser iguales, False en caso contrario</returns>
         public static bool operator !=(ESistema sistema, Numeracion numeracion)
         {
-            return !(sistema == numeracion.sistema);
+            return !(sistema == numeracion);
         }
 
-        public static Numeracion operator +(Numeracion num1, Numeracion num2)
+        //* Los operadores realizarán las operaciones correspondientes entre dos números.
+        public static Numeracion operator +(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return new Numeracion(num1.valorNumerico + num2.valorNumerico, num1.Sistema);
+            return new Numeracion(numeracion1.valorNumerico + numeracion2.valorNumerico, ESistema.Decimal);
         }
 
-        public static Numeracion operator -(Numeracion num1, Numeracion num2)
+        public static Numeracion operator -(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return new Numeracion(num1.valorNumerico - num2.valorNumerico, num1.Sistema);
+            return new Numeracion(numeracion1.valorNumerico - numeracion2.valorNumerico, ESistema.Decimal);
         }
 
-        public static Numeracion operator *(Numeracion num1, Numeracion num2)
+        public static Numeracion operator *(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return new Numeracion(num1.valorNumerico * num2.valorNumerico, num1.Sistema);
+            return new Numeracion(numeracion1.valorNumerico * numeracion2.valorNumerico, ESistema.Decimal);
         }
 
-        public static Numeracion operator /(Numeracion num1, Numeracion num2)
+        public static Numeracion operator /(Numeracion numeracion1, Numeracion numeracion2)
         {
-            return new Numeracion(num1.valorNumerico / num2.valorNumerico, num1.Sistema);
+            return new Numeracion(numeracion1.valorNumerico / numeracion2.valorNumerico, ESistema.Decimal);
         }
     }
 }
