@@ -14,13 +14,26 @@
         // Getters y Setters
         public Numeracion PrimerOperando
         {
-            get => primerOperando;
-            set => primerOperando = value;
+            get
+            {
+                return primerOperando;
+            }
+            set
+            {
+                primerOperando = value;
+            }
         }
         public Numeracion SegundoOperando
         {
-            get => segundoOperando;
-            set => segundoOperando = value;
+            get 
+            { 
+                return segundoOperando; 
+            }
+
+            set
+            {
+                segundoOperando = value;
+            }
         }
 
             /// <summary>
@@ -39,11 +52,25 @@
                     return primerOperando * segundoOperando;
 
                 case '/':
-                    return primerOperando / segundoOperando;
+                    if (Validar(segundoOperando))
+                    {
+                        return primerOperando / segundoOperando;
+                    }
+                    return new Numeracion(double.MinValue, Numeracion.ESistema.Decimal);
 
                 default:
                     return primerOperando + segundoOperando;
             }
+        }
+
+        /// <summary>
+        /// Valida que el divisor sea distinto de 0.
+        /// </summary>
+        /// <param name="divisor">La numeracion a validar</param>
+        /// <returns>True en caso de que sea distinto de 0, False en caso de que sea 0</returns>
+        private static bool Validar(Numeracion divisor)
+        {
+            return divisor.Valor != new Numeracion(0, Numeracion.ESistema.Decimal).Valor;
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Entidades
     {
         public enum ESistema
         {
-            Binario,
-            Decimal
+            Decimal,
+            Binario
         }
 
         private double valorNumerico;
