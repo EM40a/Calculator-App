@@ -2,6 +2,7 @@
 {
     public class Operacion
     {
+        /// <summary></summary>
         private Numeracion primerOperando;
         private Numeracion segundoOperando;
 
@@ -12,22 +13,11 @@
         }
 
         // Getters y Setters
-        public Numeracion PrimerOperando
+        public Numeracion SegundoOperando
         {
             get
             {
-                return primerOperando;
-            }
-            set
-            {
-                primerOperando = value;
-            }
-        }
-        public Numeracion SegundoOperando
-        {
-            get 
-            { 
-                return segundoOperando; 
+                return segundoOperando;
             }
 
             set
@@ -36,11 +26,11 @@
             }
         }
 
-            /// <summary>
-            ///  Realizara una operacion matematica segun el operador recibido. Por defecto, realizara una suma.
-            /// </summary>
-            /// <param name="operador">Un caracter (+, -, *, /) que determinara la operacion a realizar</param>
-            /// <returns>Una numeracion con el resultado de la operacion</returns>
+        /// <summary>
+        ///  Realizara una operacion matematica segun el operador recibido. Por defecto, realizara una suma.
+        /// </summary>
+        /// <param name="operador">Un caracter (+, -, *, /) que determinara la operacion a realizar</param>
+        /// <returns>Una numeracion con el resultado de la operacion</returns>
         public Numeracion Operar(char operador)
         {
             switch (operador)

@@ -1,6 +1,4 @@
 using Entidades;
-using System.Collections;
-using System.Net;
 
 namespace MiCalculadora
 {
@@ -30,7 +28,8 @@ namespace MiCalculadora
         private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show(
-                "¿Desea cerrar la calculadora?", "Cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                "¿Desea cerrar la calculadora?", "Cierre",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 );
             // ?Si contesta SI se cerrará, si contesta NO debe continuar en ejecución.
             if (dialogResult == DialogResult.No)
@@ -40,9 +39,12 @@ namespace MiCalculadora
         }
 
         //? Mostrara el resultado de la operación, convertido de acuerdo con el sistema numérico seleccionado
-        private void setResultado()
+        private void SetResultado()
         {
-            lblResultadoNumerico.Text = this.resultado.ConvertirA(sistema);
+            if (this.resultado is not null)
+            {
+                lblResultadoNumerico.Text = this.resultado.ConvertirA(sistema);
+            }
         }
 
         //* Cambia el sistema segun el RadioButton seleccionado
@@ -51,6 +53,7 @@ namespace MiCalculadora
             if (rdbDecimal.Checked)
             {
                 this.sistema = Numeracion.ESistema.Decimal;
+                this.SetResultado();
             }
         }
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
@@ -58,6 +61,7 @@ namespace MiCalculadora
             if (rdbBinario.Checked)
             {
                 this.sistema = Numeracion.ESistema.Binario;
+                this.SetResultado();
             }
         }
 
@@ -76,7 +80,10 @@ namespace MiCalculadora
         /// </summary>
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            if (primerOperando is null || segundoOperando is null)
+            bool operadoresNulos = primerOperando is null || segundoOperando is null;
+            bool operadoresVacios = txtPrimerOperador.Text == "" || txtSegundoOperador.Text == "";
+
+            if (operadoresNulos || operadoresVacios)
             {
                 MessageBox.Show("Debe ingresar los dos operandos para realizar la operación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -84,7 +91,7 @@ namespace MiCalculadora
 
             this.calculadora = new Operacion(primerOperando, segundoOperando);
             this.resultado = calculadora.Operar(cmbOperacion.Text[0]);
-            this.setResultado();
+            SetResultado();
         }
 
         /// <summary>
@@ -105,6 +112,5 @@ namespace MiCalculadora
             lblResultadoNumerico.Text = null;
             this.resultado = null;
         }
-
     }
 }

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Entidades",
+    "\\Entidades\\MiCalculadora"
   ],
-  "SelectedNode": "\\Entidades.sln",
+  "SelectedNode": "\\Entidades\\Entidades.sln",
   "PreviewInSolutionExplorer": false
 }

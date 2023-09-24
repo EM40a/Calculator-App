@@ -74,6 +74,7 @@
             // 
             // btnCerrar
             // 
+            btnCerrar.BackColor = Color.FromArgb(225, 225, 225);
             btnCerrar.Cursor = Cursors.Hand;
             btnCerrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnCerrar.Location = new Point(674, 545);
@@ -82,7 +83,7 @@
             btnCerrar.Size = new Size(288, 75);
             btnCerrar.TabIndex = 6;
             btnCerrar.Text = "Cerrar";
-            btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.UseVisualStyleBackColor = false;
             btnCerrar.Click += btnCerrar_Click;
             // 
             // rdbDecimal

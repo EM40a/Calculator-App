@@ -51,8 +51,9 @@ namespace Entidades
             {
                 this.valorNumerico = BinarioADecimal(valor);
             }
-            else if (!double.TryParse(valor, out valorNumerico))
+            else if (!double.TryParse(valor, out valorNumerico)) 
             {
+                //* Si no es un numero decimal, se inicializa con el valor minimo
                 this.valorNumerico = double.MinValue;
             }
 
@@ -109,7 +110,7 @@ namespace Entidades
         /// <returns>El numero convertido a binario o un mensaje de error en caso de que la cadena no represente un numero</returns>
         private static string DecimalABinario(string valor)
         {
-            if (!int.TryParse(valor, out int valorDecimal))
+            if (!int.TryParse(valor, out int valorDecimal) || valor.StartsWith('-'))
             {
                 return "Valor inválido";
             }
@@ -124,23 +125,18 @@ namespace Entidades
         /// <returns>El numero convertido a binario</returns>
         private static string DecimalABinario(int valor)
         {
-            valor = Math.Abs(valor); // Convierte el valor recibido a su valor absoluto
-
-            //? Escuche en clase que tambien se podia hacer de esta forma
-            //if (valor < 0)
-            //{
-            //    return double.MinValue.ToString();
-            //}
-
             string valorBinario = "";
-
+            
             do
             {
                 valorBinario = (valor % 2) + valorBinario;
                 valor /= 2;
             }
             while (valor >= 2);
-            return valor + valorBinario;
+            valorBinario = valor + valorBinario;
+
+
+            return valorBinario;
         }
 
         /// <summary>
@@ -150,6 +146,11 @@ namespace Entidades
         /// <returns>True en caso de que el valor sea binario, False en caso de que no lo sea</returns>
         private static bool EsBinario(string valor)
         {
+            if (valor.Length == 0)
+            {
+                return false;
+            }
+
             foreach (char i in valor)
             {
                 if (i != '0' && i != '1')
@@ -217,7 +218,7 @@ namespace Entidades
         {
             return new Numeracion(numeracion1.valorNumerico - numeracion2.valorNumerico, ESistema.Decimal);
         }
-
+        
         public static Numeracion operator *(Numeracion numeracion1, Numeracion numeracion2)
         {
             return new Numeracion(numeracion1.valorNumerico * numeracion2.valorNumerico, ESistema.Decimal);
