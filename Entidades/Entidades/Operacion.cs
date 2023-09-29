@@ -2,7 +2,6 @@
 {
     public class Operacion
     {
-        /// <summary></summary>
         private Numeracion primerOperando;
         private Numeracion segundoOperando;
 
@@ -33,6 +32,12 @@
         /// <returns>Una numeracion con el resultado de la operacion</returns>
         public Numeracion Operar(char operador)
         {
+            // Ambos operandos deben pertenecer al mismo sistema
+            if (this.primerOperando != this.segundoOperando)
+            {
+                return new Numeracion(double.MinValue, Numeracion.ESistema.Decimal);
+            }
+
             switch (operador)
             {
                 case '-':
@@ -60,7 +65,7 @@
         /// <returns>True en caso de que sea distinto de 0, False en caso de que sea 0</returns>
         private static bool Validar(Numeracion divisor)
         {
-            return divisor.Valor != new Numeracion(0, Numeracion.ESistema.Decimal).Valor;
+            return divisor.Valor != "0";
         }
     }
 }

@@ -28,7 +28,8 @@ namespace Entidades
             }
         }
 
-        public Numeracion(double valor, ESistema sistema):this(valor.ToString(), sistema)
+        public Numeracion(double valor, ESistema sistema)
+            :this(valor.ToString(), sistema)
         {
         }
 
@@ -136,7 +137,7 @@ namespace Entidades
             valorBinario = valor + valorBinario;
 
 
-            return valorBinario;
+            return valorBinario.PadLeft(4, '0');
         }
 
         /// <summary>
@@ -163,7 +164,6 @@ namespace Entidades
         }
 
         // <Sobrecargas>
-
         //* Dos numeraciones serán iguales si pertenecen al mismo sistema.
         /// <summary>
         /// Determina si los sistemas de ambas numeraciones son iguales

@@ -47,40 +47,45 @@
             // 
             // btnOperar
             // 
+            btnOperar.BackColor = Color.FromArgb(71, 177, 232);
             btnOperar.Cursor = Cursors.Hand;
+            btnOperar.FlatStyle = FlatStyle.Flat;
             btnOperar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnOperar.Location = new Point(62, 545);
             btnOperar.Margin = new Padding(0);
             btnOperar.Name = "btnOperar";
-            btnOperar.Size = new Size(288, 75);
+            btnOperar.Size = new Size(292, 75);
             btnOperar.TabIndex = 4;
             btnOperar.Text = "Operar";
-            btnOperar.UseVisualStyleBackColor = true;
+            btnOperar.UseVisualStyleBackColor = false;
             btnOperar.Click += btnOperar_Click;
             // 
             // btnLimpiar
             // 
+            btnLimpiar.BackColor = SystemColors.ButtonFace;
             btnLimpiar.Cursor = Cursors.Hand;
             btnLimpiar.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnLimpiar.Location = new Point(367, 545);
             btnLimpiar.Margin = new Padding(0);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(288, 75);
+            btnLimpiar.Size = new Size(292, 75);
             btnLimpiar.TabIndex = 5;
             btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCerrar
             // 
-            btnCerrar.BackColor = Color.FromArgb(225, 225, 225);
+            btnCerrar.BackColor = SystemColors.ButtonFace;
             btnCerrar.Cursor = Cursors.Hand;
+            btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(674, 545);
+            btnCerrar.Location = new Point(672, 545);
             btnCerrar.Margin = new Padding(0);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(288, 75);
+            btnCerrar.Size = new Size(292, 75);
             btnCerrar.TabIndex = 6;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = false;
@@ -143,7 +148,7 @@
             // 
             lblResultado.AutoEllipsis = true;
             lblResultado.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            lblResultado.ForeColor = Color.FromArgb(125, 226, 209);
+            lblResultado.ForeColor = Color.FromArgb(71, 177, 232);
             lblResultado.Location = new Point(62, 148);
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new Size(301, 67);
@@ -158,7 +163,7 @@
             txtPrimerOperador.Name = "txtPrimerOperador";
             txtPrimerOperador.Size = new Size(334, 53);
             txtPrimerOperador.TabIndex = 1;
-            txtPrimerOperador.Text = " ";
+            txtPrimerOperador.Text = "";
             txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
@@ -168,40 +173,40 @@
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(334, 53);
             txtSegundoOperador.TabIndex = 3;
-            txtSegundoOperador.Text = " ";
+            txtSegundoOperador.Text = "";
             txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // lblPrimerOperador
             // 
             lblPrimerOperador.AutoSize = true;
-            lblPrimerOperador.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrimerOperador.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrimerOperador.ForeColor = Color.FromArgb(215, 215, 215);
-            lblPrimerOperador.Location = new Point(62, 442);
+            lblPrimerOperador.Location = new Point(62, 445);
             lblPrimerOperador.Margin = new Padding(0);
             lblPrimerOperador.Name = "lblPrimerOperador";
-            lblPrimerOperador.Size = new Size(164, 28);
+            lblPrimerOperador.Size = new Size(143, 23);
             lblPrimerOperador.TabIndex = 10;
             lblPrimerOperador.Text = "Primer operando:";
             // 
             // lblOperacion
             // 
             lblOperacion.AutoSize = true;
-            lblOperacion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOperacion.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblOperacion.ForeColor = Color.FromArgb(215, 215, 215);
-            lblOperacion.Location = new Point(412, 442);
+            lblOperacion.Location = new Point(411, 445);
             lblOperacion.Name = "lblOperacion";
-            lblOperacion.Size = new Size(97, 28);
+            lblOperacion.Size = new Size(83, 23);
             lblOperacion.TabIndex = 11;
             lblOperacion.Text = "Operador";
             // 
             // labelSegundoOperador
             // 
             labelSegundoOperador.AutoSize = true;
-            labelSegundoOperador.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSegundoOperador.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             labelSegundoOperador.ForeColor = Color.FromArgb(215, 215, 215);
-            labelSegundoOperador.Location = new Point(628, 442);
+            labelSegundoOperador.Location = new Point(628, 445);
             labelSegundoOperador.Name = "labelSegundoOperador";
-            labelSegundoOperador.Size = new Size(186, 28);
+            labelSegundoOperador.Size = new Size(161, 23);
             labelSegundoOperador.TabIndex = 12;
             labelSegundoOperador.Text = "Segundo operando:";
             // 
@@ -219,7 +224,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(31, 40, 52);
+            BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(1006, 721);
             Controls.Add(lblResultadoNumerico);
             Controls.Add(labelSegundoOperador);

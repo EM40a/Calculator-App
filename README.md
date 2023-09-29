@@ -1,4 +1,4 @@
-# Calculadora
+# Calculadora: Binario-Decimal
 
 El primer ejercicio integrador de **Laboratorio II** es una calculadora que realiza operaciones básicas hecha en `C#` con **Windows Forms**.
 Permite realizar las operaciones de suma, resta, multiplicación y división y poder expresar el resultado tanto en **decimal** como **binario**.
@@ -21,7 +21,7 @@ Es la clase que contiene los métodos para realizar las operaciones. Contiene lo
 
 El metodo `Operar` recibe como parámetro el operador (por defecto realiza una suma) y devuelve una `Numeracion` con el resultado de la operación.
 
-### FrmCalculadora 
+### FrmCalculadora  
 
 Es el formulario principal de la aplicación. Contiene los botones numéricos, de operaciones, de conversión y de limpieza. También contiene los dos **TextBox** donde se ingresan los números y el **Label** donde se muestra el resultado.
 

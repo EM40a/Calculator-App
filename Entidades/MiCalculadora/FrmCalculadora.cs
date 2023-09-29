@@ -22,6 +22,17 @@ namespace MiCalculadora
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.cmbOperacion.SelectedIndex = 0;
+            EliminarBordeBotones();
+        }
+
+        private void EliminarBordeBotones()
+        {
+            Button[] botones = { btnLimpiar, btnOperar, btnCerrar };
+
+            foreach (Button boton in botones)
+            {
+                boton.FlatAppearance.BorderSize = 0;
+            }
         }
 
         //? Comienza el cierre del Form, se puede cancelar
@@ -68,11 +79,11 @@ namespace MiCalculadora
         //* Instancia los operadores con los valores de los TextBox
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
         {
-            primerOperando = new(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
+            this.primerOperando = new(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
         }
         private void txtSegundoOperador_TextChanged(object sender, EventArgs e)
         {
-            segundoOperando = new(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
+            this.segundoOperando = new(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
         }
 
         /// <summary>
@@ -80,18 +91,19 @@ namespace MiCalculadora
         /// </summary>
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            bool operadoresNulos = primerOperando is null || segundoOperando is null;
-            bool operadoresVacios = txtPrimerOperador.Text == "" || txtSegundoOperador.Text == "";
-
-            if (operadoresNulos || operadoresVacios)
+            //? Valida que los TextBox no estén vacíos o sean nulos
+            if ((string.IsNullOrEmpty(txtPrimerOperador.Text) || string.IsNullOrEmpty(txtSegundoOperador.Text)))
             {
                 MessageBox.Show("Debe ingresar los dos operandos para realizar la operación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            this.calculadora = new Operacion(primerOperando, segundoOperando);
-            this.resultado = calculadora.Operar(cmbOperacion.Text[0]);
-            SetResultado();
+            if (primerOperando is not null && segundoOperando is not null)
+            {
+                this.calculadora = new Operacion(primerOperando, segundoOperando);
+                this.resultado = calculadora.Operar(cmbOperacion.Text[0]);
+                this.SetResultado();
+            }
         }
 
         /// <summary>
@@ -107,9 +119,9 @@ namespace MiCalculadora
         /// </summary>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtPrimerOperador.Clear();
-            txtSegundoOperador.Clear();
-            lblResultadoNumerico.Text = null;
+            this.txtPrimerOperador.Clear();
+            this.txtSegundoOperador.Clear();
+            this.lblResultadoNumerico.Text = null;
             this.resultado = null;
         }
     }
