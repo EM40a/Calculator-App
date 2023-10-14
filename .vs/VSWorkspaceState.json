@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrmView"
   ],
-  "SelectedNode": "\\Entidades.sln",
+  "SelectedNode": "\\FrmView\\FrmCalculadora.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,30 +1,47 @@
-# Calculadora
+# Calculator-App: Binario-Decimal
 
-El primer ejercicio integrador de **Laboratorio II** es una calculadora que realiza operaciones básicas hecha en `C#` con **Windows Forms**.
+El primer parcial de **Laboratorio II** es una calculadora que realiza operaciones básicas hecha en `C#`.
+
 Permite realizar las operaciones de suma, resta, multiplicación y división y poder expresar el resultado tanto en **decimal** como **binario**.
+
+Ademas, de poder acceder al historial de operaciones realizadas y poder limpiarlo.
 
 ## Diagrama de clases 📋
 
-![Diagrama de clases](src/img/Diagrama-Entidades.png)
+Inicialmente, el proyecto contara con las siguientes clases:
+
+- **Numeracion**
+- **Sistema Decimal**
+- **Sistema Binario**
+- **Calculadora**
+
+Junto a un enumerado **ESistema** que contendra los valores **Binario**, **Decimal** y **Octal** (proximamente) que representaran el sistema de la calculadora.
+
+Ademas, se creara un formulario principal **FrmCalculadora** que contendra los botones y los campos de texto para poder realizar las operaciones.
 
 ### Numeracion
 
-Contiene los atributos **valorNumerico** de tipo `double` y **sistema** de tipo **ESistema** junto al resto de metodos.
+Es la clase base de la aplicación. Contiene los atributos **valor** y **msgError** ambas de tipo `string`.
 
-El **valorNumerico** representa el número ingresado por el usuario y el sistema representa el **sistema** de numeración en el que se encuentra el número (decimal o binario).
+El **valor** representa el valor numerico de la numeracion y **msgError** el mensaje de error que se mostrara en caso de que el valor no sea valido.
 
-Internamente siempre trabajaremos con tipos numéricos.
+Las clases **Sistema Decimal** y **Sistema Binario** heredan de esta clase. E internamente siempre trabajaremos con tipos numéricos.
 
-### Operacion
+![Diagrama de clases](src/img/Diagrama-Numeracion.png)
+
+### Calculadora
 
 Es la clase que contiene los métodos para realizar las operaciones. Contiene los atributos **primerOperando** y **segundoOperando** de tipo `Numeracion`.
 
-El metodo `Operar` recibe como parámetro el operador (por defecto realiza una suma) y devuelve una `Numeracion` con el resultado de la operación.
+El metodo `Caclular` recibe como parámetro el operador (por defecto realiza una suma) y mapea el resultado de la operación segun el sistema de la calculadora.
 
-### FrmCalculadora 
+![Diagrama de clases](src/img/Diagrama-Calculadora.png)
 
-Es el formulario principal de la aplicación. Contiene los botones numéricos, de operaciones, de conversión y de limpieza. También contiene los dos **TextBox** donde se ingresan los números y el **Label** donde se muestra el resultado.
+### FrmCalculadora
+
+Es el formulario principal de la aplicación. Contiene los botones para realizar la operacion, revisar el historial y de limpieza para este ultimo. 
+
+También contiene dos **TextBox** donde se ingresan los números y el **Label** donde se muestra el resultado.
 
 ![Diagrama de clases](src/img/Diagrama-Formulario.png)
 
-Aquí se encuentra el método **btnOperar_Click** que instancia un objeto de la clase `Operacion` y llama al método **Operar** de la misma.
