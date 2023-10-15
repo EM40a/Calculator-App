@@ -41,14 +41,13 @@ namespace Entidades
         /// </summary>
         private bool EsSistemaBinarioValido(string valor)
         {
-            foreach (char i in valor)
+            foreach (char item in valor)
             {
-                if (i != '0' && i != '1')
+                if (item < '0' || item > '1')
                 {
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -78,6 +77,21 @@ namespace Entidades
 
             return double.MinValue;
         }
+
+        /// <summary>
+        /// Le da formato al numero binario para que se muestre correctamente.
+        /// </summary>
+        /// <param name="numero">La cadena a formatear</param>
+        /// <returns>Una cadena con el numero binario formateado</returns>
+        internal static string FormatearBinario(string numero)
+        {
+            int longitud = numero.Length;
+            int residuo = longitud % 4; // 4 es la cantidad de digitos que se agrupan en el sistema binario
+            int cerosFaltantes = residuo == 0 ? 0 : 4 - residuo;  // Si el residuo es 0, no se necesitan ceros
+
+            return numero.PadLeft(longitud + cerosFaltantes, '0');
+        }
+
         #endregion
 
         public static implicit operator SistemaBinario(string valor)

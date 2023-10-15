@@ -52,7 +52,7 @@
         /// </summary>
         public static bool operator ==(Numeracion n1, Numeracion n2)
         {
-            return (n1 is not null && n2 is not null) && (n1.GetType() == n2.GetType());
+            return n1 is not null && n2 is not null && n1.GetType() == n2.GetType();
         }
 
         /// <summary>
@@ -63,11 +63,13 @@
             return !(n1 == n2);
         }
 
+
         public static explicit operator double(Numeracion numeracion)
         {
             double.TryParse(numeracion.valor, out double resultado);
             return resultado;
         }
+
 
         //* Los operadores realizarán las operaciones correspondientes entre dos números.
         public static double operator +(Numeracion n1, Numeracion n2)

@@ -29,7 +29,7 @@ namespace Entidades
         #endregion
 
         #region Propiedades
-        public string NombreAlumno { get => nombre; set => nombre = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
         public List<string> Operaciones { get => operaciones; }
         public static ESistema Sistema { get => sistema; set => sistema = value; }
         public Numeracion Resultado { get => resultado; }
@@ -94,7 +94,7 @@ namespace Entidades
         /// </summary>
         private Numeracion MapeaResultado(double valor)
         {
-            Numeracion resultado = (SistemaDecimal)valor.ToString();
+            Numeracion resultado = (SistemaDecimal) valor.ToString();
             return resultado.CambiarSistemaDeNumeracion(Calculadora.sistema);
         }
 

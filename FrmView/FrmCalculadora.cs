@@ -1,10 +1,10 @@
-using Entidades;
+﻿using Entidades;
 
 namespace FrmView
 {
     public partial class FrmCalculadora : Form
     {
-        private Calculadora calculadora;
+        private readonly Calculadora calculadora;
 
         #region Form
         public FrmCalculadora()
@@ -15,7 +15,8 @@ namespace FrmView
 
         private void FrmCalculadora_Load(object sender, EventArgs e)
         {
-            this.cmbOperacion.DataSource = new char[] { ' ', '+', '-', '*', '/' };
+            this.cmbOperacion.DataSource = new char[] { '+', '-', '*', '/' };
+            this.Text += this.calculadora.Nombre;
         }
 
         private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
@@ -26,22 +27,7 @@ namespace FrmView
                 e.Cancel = true;
             }
         }
-        #endregion
 
-        #region Cambio de sistema
-        private void rdbBinario_CheckedChanged(object sender, EventArgs e)
-        {
-            Calculadora.Sistema = ESistema.Binario;
-        }
-        private void rdbDecimal_CheckedChanged(object sender, EventArgs e)
-        {
-            Calculadora.Sistema = ESistema.Decimal;
-        }
-
-        private void rdbOctal_CheckedChanged(object sender, EventArgs e)
-        {
-            Calculadora.Sistema = ESistema.Octal;
-        }
         #endregion
 
         #region Metodos
@@ -83,6 +69,14 @@ namespace FrmView
             this.MostrarHistorial();
         }
 
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            this.lblHistorial.Visible ^= true;
+            this.lstHistorial.Visible ^= true;
+            this.btnOperar.Enabled ^= true;
+            this.MostrarHistorial();
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.calculadora.EliminarHistorialDeOperaciones();
@@ -91,13 +85,22 @@ namespace FrmView
             this.lblResultado.Text = "0";
             this.MostrarHistorial();
         }
+        #endregion
 
-        private void btnHistorial_Click(object sender, EventArgs e)
+        #region Cambio de sistema
+        private void rdbDecimal_CheckedChanged(object sender, EventArgs e)
         {
-            this.lblHistorial.Visible ^= true;
-            this.lstHistorial.Visible ^= true;
-            this.btnOperar.Enabled ^= true;
-            this.MostrarHistorial();
+            Calculadora.Sistema = ESistema.Decimal;
+        }
+
+        private void rdbBinario_CheckedChanged(object sender, EventArgs e)
+        {
+            Calculadora.Sistema = ESistema.Binario;
+        }
+
+        private void rdbOctal_CheckedChanged(object sender, EventArgs e)
+        {
+            Calculadora.Sistema = ESistema.Octal;
         }
         #endregion
     }

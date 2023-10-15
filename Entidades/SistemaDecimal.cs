@@ -32,25 +32,30 @@ namespace Entidades
         private SistemaBinario DecimalABinario()
         {
             int valorEntero = (int) this.ValorNumerico;
-            string valorBinario = string.Empty;
 
             if (valorEntero < 0)
             {
                 return Numeracion.msgError;
             }
 
-            while (valorEntero > 0) ;
+            string valorBinario = string.Empty;
+            while (valorEntero > 0)
             {
                 int resto = valorEntero % 2;
-                valorEntero /= 2;
+                valorEntero = valorEntero / 2;
                 valorBinario = resto + valorBinario;
             }
 
-            return valorBinario;
-        }
-        #endregion
+            int longitudDeseada = 4;
 
-        #region Sobrecarga de operadores
+            while (valorBinario.Length < longitudDeseada)
+            {
+                valorBinario = valorBinario.PadLeft(longitudDeseada, '0');
+            }
+
+            return SistemaBinario.FormatearBinario(valorBinario);
+        }
+
         /// <summary>
         /// Verifica que el valor recibido sea un numero decimal valido y que no sea nulo o contenga espacios.
         /// </summary>
@@ -58,7 +63,9 @@ namespace Entidades
         {
             return base.EsNumeracionValida(valor) && this.EsSistemaDecimalValido(valor);
         }
+        #endregion
 
+        #region Sobrecarga de operadores
         /// <summary>
         /// Verifica que el valor recibido sea un numero decimal valido.
         /// </summary>

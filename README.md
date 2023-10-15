@@ -1,10 +1,12 @@
 # Calculator-App: Binario-Decimal
 
-El primer parcial de **Laboratorio II** es una calculadora que realiza operaciones básicas hecha en `C#`.
+El primer parcial de **Laboratorio II** parte de del **primer ejercicio integrador**, es una calculadora que realiza operaciones básicas hecha en `C#`.
 
 Permite realizar las operaciones de suma, resta, multiplicación y división y poder expresar el resultado tanto en **decimal** como **binario**.
 
-Ademas, de poder acceder al historial de operaciones realizadas y poder limpiarlo.
+Ademas de poder acceder al historial de operaciones realizadas y poder limpiarlo.
+
+![Gif mostrando la calculadora](src/vid/Preview-Calculator-App.gif)
 
 ## Diagrama de clases 📋
 
@@ -21,17 +23,21 @@ Ademas, se creara un formulario principal **FrmCalculadora** que contendra los b
 
 ### Numeracion
 
-Es la clase base de la aplicación. Contiene los atributos **valor** y **msgError** ambas de tipo `string`.
-
-El **valor** representa el valor numerico de la numeracion y **msgError** el mensaje de error que se mostrara en caso de que el valor no sea valido.
+Es la clase base de la aplicación y es `abstracta`. Contiene los atributos **valor** y **msgError** ambas de tipo `string` que representaran el valor numerico de la numeracion dependiendo de si esta es valida o no. 
 
 Las clases **Sistema Decimal** y **Sistema Binario** heredan de esta clase. E internamente siempre trabajaremos con tipos numéricos.
 
 ![Diagrama de clases](src/img/Diagrama-Numeracion.png)
 
+Tanto **Sistema Decimal** como **Sistema Binario** contienen métodos que les permitira validar el numero de la numeracion.
+
 ### Calculadora
 
-Es la clase que contiene los métodos para realizar las operaciones. Contiene los atributos **primerOperando** y **segundoOperando** de tipo `Numeracion`.
+Es la clase que contiene los métodos para realizar las operaciones. Contiene los atributos **primerOperando**, **segundoOperando** y **resultado** de tipo `Numeracion`. 
+
+Junto a **operaciones** que es un `List<string>` que contiene el historial de operaciones realizadas, **sistema** de tipo `ESistema` que representa el sistema de la calculadora. 
+
+Adicionalmente esta **nombre** que es un `string` que representa el nombre de la calculadora (o de su dueño).
 
 El metodo `Caclular` recibe como parámetro el operador (por defecto realiza una suma) y mapea el resultado de la operación segun el sistema de la calculadora.
 
@@ -44,4 +50,3 @@ Es el formulario principal de la aplicación. Contiene los botones para realizar
 También contiene dos **TextBox** donde se ingresan los números y el **Label** donde se muestra el resultado.
 
 ![Diagrama de clases](src/img/Diagrama-Formulario.png)
-
